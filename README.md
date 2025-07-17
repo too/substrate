@@ -4,8 +4,6 @@
 
 A modern [Copier template](https://github.com/copier-org/copier) for scaffolding Python packages and apps.
 
-<video src="https://github.com/user-attachments/assets/28d23137-ebae-47d8-a6e5-11f66abf2a91" controls preload></video>
-
 ## 🎁 Features
 
 - 🧑‍💻 One-click development environments with [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) and [GitHub Codespaces](https://github.com/features/codespaces)
@@ -55,6 +53,8 @@ git push origin main --tags
 ```
 
 ## 🍪 Migrating from Cookiecutter
+<details>
+<summary>Howto</summary>
 
 > [!IMPORTANT]
 > This project was formerly known as `Poetry Cookiecutter` and was based on [Poetry](https://github.com/python-poetry/poetry) and [Cookiecutter](https://github.com/cookiecutter/cookiecutter). We will continue to support the original Cookiecutter-based template side by side with the new Copier-based template. However, we do encourage users to upgrade to the new Copier-based template by following the instructions below.
@@ -90,6 +90,7 @@ To migrate a project from Cookiecutter to Copier, follow these steps:
     ```
 
 5. Create a PR from your branch, review it, and merge it!
+</details>
 
 ## Contributing
 
@@ -116,7 +117,7 @@ To migrate a project from Cookiecutter to Copier, follow these steps:
 
 </details>
 
-<details open>
+<details>
 <summary>Development environments</summary>
 
 The following development environments are supported:
