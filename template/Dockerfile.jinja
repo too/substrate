@@ -10,6 +10,9 @@ ENV UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
 # Tell Git that the workspace is safe to avoid 'detected dubious ownership in repository' warnings.
 RUN git config --system --add safe.directory '*'
 
+RUN echo "deb http://mirrors.aliyun.com/debian $(grep VERSION_CODENAME /etc/os-release | cut -d= -f2) main contrib non-free" > /etc/apt/sources.list && \
+    echo "deb http://mirrors.aliyun.com/debian-security $(grep VERSION_CODENAME /etc/os-release | cut -d= -f2)-security main contrib non-free" >> /etc/apt/sources.list
+
 # Create a non-root user and give it passwordless sudo access [1].
 # [1] https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user
 RUN --mount=type=cache,target=/var/cache/apt/ \
@@ -40,9 +43,16 @@ ENV PYTHONUNBUFFERED=1
 # Remove docker-clean so we can manage the apt cache with the Docker build cache.
 RUN rm /etc/apt/apt.conf.d/docker-clean
 
+RUN echo "deb http://mirrors.aliyun.com/debian $(grep VERSION_CODENAME /etc/os-release | cut -d= -f2) main contrib non-free" > /etc/apt/sources.list && \
+    echo "deb http://mirrors.aliyun.com/debian-security $(grep VERSION_CODENAME /etc/os-release | cut -d= -f2)-security main contrib non-free" >> /etc/apt/sources.list
+
 # Install compilers that may be required for certain packages or platforms.
 RUN --mount=type=cache,target=/var/cache/apt/ \
     --mount=type=cache,target=/var/lib/apt/ \
+    sed -i \
+     -e 's|http://deb.debian.org/debian|http://mirrors.aliyun.com/debian|g' \
+     -e 's|http://security.debian.org/debian-security|http://mirrors.aliyun.com/debian-security|g' \
+      /etc/apt/sources.list && \
     apt-get update && \
     apt-get install --no-install-recommends --yes build-essential
 
