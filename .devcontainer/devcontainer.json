@@ -6,6 +6,9 @@
         "ghcr.io/devcontainers-extra/features/devcontainers-cli:1": {},
         "ghcr.io/devcontainers-extra/features/starship:1": {}
     },
+    "runArgs": [
+        "--env", "GITHUB_TOKEN=${GITHUB_TOKEN}"
+    ],
     "remoteEnv": {
         "VIRTUAL_ENV": "/opt/venv",
         "PATH": "/opt/venv/bin:${containerEnv:PATH}",

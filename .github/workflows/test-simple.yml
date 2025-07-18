@@ -1,4 +1,4 @@
-name: Test
+name: Test-Simple
 
 on:
   push:
@@ -52,6 +52,8 @@ jobs:
           git add .
 
       - name: Lint and test project
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: devcontainers/ci@v0.3
         with:
           subFolder: ./my-project/
